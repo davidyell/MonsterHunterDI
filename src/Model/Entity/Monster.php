@@ -46,4 +46,12 @@ class Monster
     {
         return $this->data['species'];
     }
+
+    /**
+     * @return string|null
+     */
+    public function image(): ?string
+    {
+        return $this->data['image'];
+    }
 }

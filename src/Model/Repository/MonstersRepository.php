@@ -36,6 +36,7 @@ class MonstersRepository implements RepositoryInterface
         $query = 'SELECT
                         monsters.id AS id,
                         monsters.name AS monster_name,
+                        monsters.image AS monster_image,
                         species.id AS species_id,
                         species.name AS species_name
                     FROM
@@ -57,6 +58,7 @@ class MonstersRepository implements RepositoryInterface
             $monster = new Monster([
                 'id' => $row['id'],
                 'name' => $row['monster_name'],
+                'image' => $row['monster_image'],
                 'species' => new Species([
                     'id' => $row['species_id'],
                     'name' => $row['species_name']
@@ -81,6 +83,7 @@ class MonstersRepository implements RepositoryInterface
         $query = 'SELECT
                         monsters.id AS id,
                         monsters.name AS monster_name,
+                        monsters.image AS monster_image,
                         species.id AS species_id,
                         species.name AS species_name
                     FROM
@@ -104,12 +107,14 @@ class MonstersRepository implements RepositoryInterface
         $monster = new Monster([
             'id' => $row['id'],
             'name' => $row['monster_name'],
+            'image' => $row['monster_image'],
             'species' => new Species([
                 'id' => $row['species_id'],
                 'name' => $row['species_name']
             ])
         ]);
 
+        $statement->close();
         return $monster;
     }
 }

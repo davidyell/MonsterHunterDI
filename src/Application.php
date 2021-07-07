@@ -21,8 +21,8 @@ class Application
         $controller = new MonstersController();
 
         if (\stristr($request->getUri()->getPath(), 'monsters/view') !== false) {
-            $id = \preg_match('@\/monsters\/view\/([\d]+)@', $request->getUri()->getPath());
-            return $controller->view((int)$id);
+            \preg_match('@\/monsters\/view\/([\d]+)@', $request->getUri()->getPath(), $matches);
+            return $controller->view((int)$matches[1]);
         }
 
         return $controller->list();

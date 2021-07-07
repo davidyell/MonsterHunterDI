@@ -8,9 +8,26 @@
 <div class="container">
     <h1><?= $monster->name()?></h1>
 
-    <p>Species: <strong><?= $monster->species()->name()?></strong></p>
+    <?php if (!empty($monster->image())):?>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <img src="/img/<?= $monster->image()?>" alt="<?= $monster->name()?>">
+            </div>
+        </div>
+    <?php endif;?>
 
-    <p>
-        <a href="/" title="Back" class="btn btn-default">Back</a>
-    </p>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <tr>
+                    <td>Species</td>
+                    <td><strong><?= $monster->species()->name()?></strong></td>
+                </tr>
+            </table>
+
+            <p class="text-center">
+                <a href="/" title="Back" class="btn btn-default btn-block">&leftarrow; Back</a>
+            </p>
+        </div>
+    </div>
 </div>
