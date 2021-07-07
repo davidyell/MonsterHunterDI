@@ -6,7 +6,6 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Datastore\Datastore;
 use App\Model\Repository\MonstersRepository;
 use App\Model\Repository\RepositoryInterface;
 use Laminas\Diactoros\Response;
@@ -25,8 +24,7 @@ class MonstersController
      */
     public function __construct()
     {
-        $db = new Datastore();
-        $this->monstersRepository = new MonstersRepository($db);
+        $this->monstersRepository = new MonstersRepository();
     }
 
     /**

@@ -24,9 +24,9 @@ class MonstersRepository implements RepositoryInterface
     /**
      * MonstersRepository constructor.
      */
-    public function __construct(Datastore $datastore)
+    public function __construct()
     {
-        $this->datastore = $datastore;
+        $this->datastore = new Datastore();
         $this->entityClass = Monster::class;
     }
 
