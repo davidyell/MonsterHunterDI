@@ -41,4 +41,21 @@ class MonstersController
 
         return $response;
     }
+
+    /**
+     * View a single monster
+     *
+     * @param int $id
+     * @return \Psr\Http\Message\ResponseInterface
+     * @throws \Throwable
+     */
+    public function view(int $id): ResponseInterface
+    {
+        $monster = $this->monstersRepository->findOne($id);
+
+        $phpView = new PhpRenderer(\dirname(__DIR__) . '/Views/Monsters');
+        $response = $phpView->render(new Response(), 'view.php', ['monster' => $monster]);
+
+        return $response;
+    }
 }

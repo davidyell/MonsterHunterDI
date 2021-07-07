@@ -19,6 +19,12 @@ class Application
     public function dispatch(RequestInterface $request): ResponseInterface
     {
         $controller = new MonstersController();
+
+        if (\stristr($request->getUri()->getPath(), 'monsters/view') !== false) {
+            $id = \preg_match('@\/monsters\/view\/([\d]+)@', $request->getUri()->getPath());
+            return $controller->view((int)$id);
+        }
+
         return $controller->list();
     }
 }
