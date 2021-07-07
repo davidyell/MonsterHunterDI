@@ -15,8 +15,8 @@
         </tr>
         <?php foreach ($monsters as $monster): ?>
             <tr>
-                <td><?= $monster->name()?></td>
-                <td><?= $monster->species()?></td>
+                <td><a href="/monsters/view/<?= $monster->id()?>" title="<<?= $monster->name()?>"><?= $monster->name()?></a></td>
+                <td><?= $monster->species()->name()?></td>
             </tr>
         <?php endforeach;?>
     </table>

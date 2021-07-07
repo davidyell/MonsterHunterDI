@@ -36,14 +36,14 @@ class Monster
      */
     public function name(): string
     {
-        return $this->data['monster_name'];
+        return $this->data['name'];
     }
 
     /**
-     * @return string|null
+     * @return Species
      */
-    public function species(): ?string
+    public function species(): Species
     {
-        return $this->data['species_name'];
+        return $this->data['species'];
     }
 }
