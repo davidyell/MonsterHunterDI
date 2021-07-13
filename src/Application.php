@@ -11,14 +11,14 @@ declare(strict_types=1);
 namespace App;
 
 use App\Controllers\MonstersController;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 class Application
 {
-    public function dispatch(RequestInterface $request): ResponseInterface
+    public function dispatch(ServerRequestInterface $request): ResponseInterface
     {
-        $controller = new MonstersController();
+        $controller = new MonstersController($request);
 
         if (\stristr($request->getUri()->getPath(), 'monsters/view') !== false) {
             \preg_match('@\/monsters\/view\/([\d]+)@', $request->getUri()->getPath(), $matches);
