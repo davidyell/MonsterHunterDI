@@ -55,7 +55,7 @@ class MonstersRepository implements RepositoryInterface
         }
 
         $resultArray = [];
-        while($row = $result->fetchArray(SQLITE3_ASSOC)) {
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
             $monster = new Monster([
                 'id' => $row['id'],
                 'name' => $row['monster_name'],

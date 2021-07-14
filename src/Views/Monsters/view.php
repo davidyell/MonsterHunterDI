@@ -8,7 +8,7 @@
 <div class="container">
     <h1><?= $monster->name()?></h1>
 
-    <?php if (!empty($monster->image())):?>
+    <?php if (!empty($monster->image())) :?>
         <div class="row">
             <div class="col-md-12 text-center">
                 <img src="/img/<?= $monster->image()?>" alt="<?= $monster->name()?>">

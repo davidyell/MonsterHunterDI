@@ -41,7 +41,8 @@ class MonstersController
     {
         $monsters = $this->monstersRepository->findAll();
 
-        if (!empty($this->request->getHeader('Content-Type')) && $this->request->getHeader('Content-Type')[0] === 'application/json') {
+        if (!empty($this->request->getHeader('Content-Type'))
+            && $this->request->getHeader('Content-Type')[0] === 'application/json') {
             return new Response\JsonResponse($monsters);
         }
 
@@ -62,7 +63,8 @@ class MonstersController
     {
         $monster = $this->monstersRepository->findOne($id);
 
-        if (!empty($this->request->getHeader('Content-Type')) && $this->request->getHeader('Content-Type')[0] === 'application/json') {
+        if (!empty($this->request->getHeader('Content-Type'))
+            && $this->request->getHeader('Content-Type')[0] === 'application/json') {
             return new Response\JsonResponse($monster);
         }
 

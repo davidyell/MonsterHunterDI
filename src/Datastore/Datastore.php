@@ -1,11 +1,4 @@
 <?php
-/**
- * SQLite3
- *
- * Copyright (c) 2021 Comparison Technologies Ltd.
- *
- * @author David Yell <david.yell@comparisontech.com>
- */
 declare(strict_types=1);
 
 namespace App\Datastore;

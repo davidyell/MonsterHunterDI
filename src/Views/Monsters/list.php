@@ -13,9 +13,13 @@
             <th>Name</th>
             <th>Species</th>
         </tr>
-        <?php foreach ($monsters as $monster): ?>
+        <?php foreach ($monsters as $monster) : ?>
             <tr>
-                <td><a href="/monsters/view/<?= $monster->id()?>" title="<<?= $monster->name()?>"><?= $monster->name()?></a></td>
+                <td>
+                    <a href="/monsters/view/<?= $monster->id()?>" title="<<?= $monster->name()?>">
+                        <?= $monster->name()?>
+                    </a>
+                </td>
                 <td><?= $monster->species()->name()?></td>
             </tr>
         <?php endforeach;?>
