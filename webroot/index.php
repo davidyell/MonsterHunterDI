@@ -7,6 +7,7 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals();
 $app = new \App\Application();
 $response = $app->dispatch($request);
 
+// Render the response
 $headers = $response->getHeaders();
 foreach ($headers as $header => $values) {
     header($header . ': ' . $values[0]);

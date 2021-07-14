@@ -6,9 +6,9 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Model\Repository\MonstersRepository;
 use App\Model\Repository\RepositoryInterface;
 use Laminas\Diactoros\Response;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\PhpRenderer;
@@ -23,12 +23,12 @@ class MonstersController
     /**
      * MonstersController constructor.
      *
-     * @param \Psr\Http\Message\RequestInterface $request
-     * @return void
+     * @param \Psr\Http\Message\ServerRequestInterface $request Incoming request instance
+     * @param \Psr\Container\ContainerInterface $container Built container
      */
-    public function __construct(ServerRequestInterface $request)
+    public function __construct(ServerRequestInterface $request, ContainerInterface $container)
     {
-        $this->monstersRepository = new MonstersRepository();
+        $this->monstersRepository = $container->get('MonstersRepository');
         $this->request = $request;
     }
 

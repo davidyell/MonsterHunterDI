@@ -19,11 +19,12 @@ class MonstersRepository implements RepositoryInterface
 
     /**
      * MonstersRepository constructor.
+     *
+     * @param \App\Datastore\Datastore $datastore
      */
-    public function __construct()
+    public function __construct(Datastore $datastore)
     {
-        $this->datastore = new Datastore();
-        $this->entityClass = Monster::class;
+        $this->datastore = $datastore;
     }
 
     /**
