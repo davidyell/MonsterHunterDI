@@ -15,6 +15,7 @@ use App\Datastore\Datastore;
 use App\Model\Entity\Monster;
 use App\Model\Entity\Species;
 use App\Model\Repository\MonstersRepository;
+use App\Views\View;
 use DI\Container;
 use Laminas\Diactoros\Response;
 use Laminas\Diactoros\ServerRequest;
@@ -77,39 +78,8 @@ class MonstersControllerTest extends TestCase
 
         $result = $controller->list();
 
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertNotEmpty($result->getBody());
-    }
-
-    /**
-     * @covers \App\Controllers\MonstersController::list
-     * @covers \App\Controllers\MonstersController::__construct
-     * @uses \App\Model\Repository\MonstersRepository
-     * @uses \App\Datastore\Datastore
-     * @uses \App\Model\Entity\Monster
-     * @uses \App\Model\Entity\Species
-     */
-    public function testListCanOutputJson()
-    {
-        $request = new ServerRequest(
-            [],
-            [],
-            '/',
-            'get',
-        'php://input',
-            ['Content-Type' => 'application/json'],
-        );
-
-        $controller = new MonstersController($request, $this->container);
-
-        $result = $controller->list();
-
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertNotEmpty($result->getBody());
-
-        $bodyJson = \json_decode((string)$result->getBody(), true);
-        $this->assertIsArray($bodyJson);
-        $this->assertEquals('Examplasaurus', $bodyJson[0]['name']);
+        $this->assertInstanceOf(View::class, $result);
+        $this->assertArrayHasKey('monsters', $result->vars);
     }
 
     /**
@@ -128,38 +98,7 @@ class MonstersControllerTest extends TestCase
 
         $result = $controller->view(1);
 
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertNotEmpty($result->getBody());
-    }
-
-    /**
-     * @covers \App\Controllers\MonstersController::view
-     * @covers \App\Controllers\MonstersController::__construct
-     * @uses \App\Model\Repository\MonstersRepository
-     * @uses \App\Datastore\Datastore
-     * @uses \App\Model\Entity\Monster
-     * @uses \App\Model\Entity\Species
-     */
-    public function testViewCanOutputJson()
-    {
-        $request = new ServerRequest(
-            [],
-            [],
-            '/monsters/view/1',
-            'get',
-            'php://input',
-            ['Content-Type' => 'application/json'],
-        );
-
-        $controller = new MonstersController($request, $this->container);
-
-        $result = $controller->view(1);
-
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertNotEmpty($result->getBody());
-
-        $bodyJson = \json_decode((string)$result->getBody(), true);
-        $this->assertIsArray($bodyJson);
-        $this->assertEquals('Examplasaurus', $bodyJson['name']);
+        $this->assertInstanceOf(View::class, $result);
+        $this->assertArrayHasKey('monster', $result->vars);
     }
 }

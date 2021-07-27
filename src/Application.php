@@ -47,10 +47,8 @@ class Application
      * Dispatch a response for rendering
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws \Throwable
      */
-    public function dispatch(ServerRequestInterface $request): ResponseInterface
+    public function dispatch(ServerRequestInterface $request): void
     {
         $controller = new MonstersController($request, $this->container);
 
@@ -65,13 +63,12 @@ class Application
     }
 
     /**
-     *
+     * Render a View
      *
      * @param \App\Views\View $view
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws \Throwable
+     * @return void
      */
-    public function render(ServerRequestInterface $request, View $view): ResponseInterface
+    public function render(ServerRequestInterface $request, View $view): void
     {
         if (!empty($request->getHeader('Content-Type'))
             && $request->getHeader('Content-Type')[0] === 'application/json') {
