@@ -14,7 +14,7 @@ Further requirements can be found in the `composer.json`
 * Checkout the code
 * `composer install`
 * `composer server`
-* Visit `localhost:1234`
+* Visit [http://localhost:1234](http://localhost:1234)
 
 ## What's in the box?
 A basic database using some data from the [Monster Hunter game franchise](http://www.capcom-europe.com/). An index 
