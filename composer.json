@@ -23,12 +23,15 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src"
+            "App\\": "src",
+            "App\\Test\\": "tests"
         }
     },
     "scripts": {
         "server": "php -S 127.0.0.1:1234 -t webroot",
         "cs-check": "phpcs --colors --standard=PSR2 src",
-        "cs-fix": "phpcbf --standard=PSR2 src"
+        "cs-fix": "phpcbf --standard=PSR2 src",
+        "test": "./vendor/bin/phpunit",
+        "test:coverage": "./vendor/bin/phpunit --coverage-html=coverage"
     }
 }
