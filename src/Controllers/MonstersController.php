@@ -7,11 +7,9 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Model\Repository\RepositoryInterface;
-use Laminas\Diactoros\Response;
+use App\Views\View;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Views\PhpRenderer;
 
 class MonstersController
 {
@@ -33,44 +31,35 @@ class MonstersController
     }
 
     /**
-     * Get a list of all the available monsters
+     * Get a list of all the monsters
      *
-     * @throws \Throwable
+     * @return \App\Views\View
      */
-    public function list(): ResponseInterface
+    public function list(): View
     {
         $monsters = $this->monstersRepository->findAll();
 
-        if (!empty($this->request->getHeader('Content-Type'))
-            && $this->request->getHeader('Content-Type')[0] === 'application/json') {
-            return new Response\JsonResponse($monsters);
-        }
-
-        $phpView = new PhpRenderer(\dirname(__DIR__) . '/Views/Monsters');
-        $response = $phpView->render(new Response(), 'list.php', ['monsters' => $monsters]);
-
-        return $response;
+        return new View(
+            ['monsters' => $monsters],
+            \dirname(__DIR__) . '/Views/Monsters',
+            'list.php'
+        );
     }
 
     /**
      * View a single monster
      *
-     * @param int $id
-     * @return \Psr\Http\Message\ResponseInterface
-     * @throws \Throwable
+     * @param int $id Monster id to view
+     * @return \App\Views\View
      */
-    public function view(int $id): ResponseInterface
+    public function view(int $id): View
     {
         $monster = $this->monstersRepository->findOne($id);
 
-        if (!empty($this->request->getHeader('Content-Type'))
-            && $this->request->getHeader('Content-Type')[0] === 'application/json') {
-            return new Response\JsonResponse($monster);
-        }
-
-        $phpView = new PhpRenderer(\dirname(__DIR__) . '/Views/Monsters');
-        $response = $phpView->render(new Response(), 'view.php', ['monster' => $monster]);
-
-        return $response;
+        return new View(
+            ['monster' => $monster],
+            \dirname(__DIR__) . '/Views/Monsters',
+            'view.php'
+        );
     }
 }
