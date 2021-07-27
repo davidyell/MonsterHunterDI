@@ -29,11 +29,14 @@ This project uses the PSR2 coding standard. There are shortcuts in Composer.
 * `composer cs-check`
 * `composer cs-fix`
 
+### Testing
+`composer test`
+
 ## TODO
- - [] Add tests
- - [] Add a Logger from the container
- - [] Add more data to the database
- - [] Create a React front-end based on the JSON API
+ - [x] Add tests
+ - [ ] Add a Logger from the container
+ - [ ] Add more data to the database
+ - [ ] Create a React front-end based on the JSON API
 
 ## Disclaimer
 This project is not associated with Capcom or any Monster Hunter game. It was just example data as I have been 
