@@ -32,5 +32,4 @@ class View
         $this->templateFolder = $templateFolder;
         $this->template = $template;
     }
-
 }
