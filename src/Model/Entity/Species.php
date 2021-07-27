@@ -30,9 +30,9 @@ class Species implements JsonSerializable
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function id(): string
+    public function id(): int
     {
         return $this->data['id'];
     }
