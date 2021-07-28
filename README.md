@@ -34,7 +34,7 @@ This project uses the PSR2 coding standard. There are shortcuts in Composer.
 
 ## TODO
  - [x] Add tests
- - [ ] Add a Logger from the container
+ - [x] Add a Logger from the container
  - [ ] Add more data to the database
  - [ ] Create a React front-end based on the JSON API
 

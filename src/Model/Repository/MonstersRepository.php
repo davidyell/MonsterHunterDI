@@ -9,9 +9,13 @@ namespace App\Model\Repository;
 use App\Datastore\Datastore;
 use App\Model\Entity\Monster;
 use App\Model\Entity\Species;
+use Monolog\Logger;
+use Psr\Log\LoggerAwareTrait;
 
 class MonstersRepository implements RepositoryInterface
 {
+    use LoggerAwareTrait;
+
     /**
      * @var \App\Datastore\Datastore
      */
@@ -22,9 +26,10 @@ class MonstersRepository implements RepositoryInterface
      *
      * @param \App\Datastore\Datastore $datastore
      */
-    public function __construct(Datastore $datastore)
+    public function __construct(Datastore $datastore, Logger $logger)
     {
         $this->datastore = $datastore;
+        $this->setLogger($logger);
     }
 
     /**
@@ -50,6 +55,7 @@ class MonstersRepository implements RepositoryInterface
         $result = $statement->execute();
 
         if ($result instanceof \SQLite3Result === false) {
+            $this->logger->warning('Finding monsters returned no results', [$statement->getSQL(true)]);
             $statement->close();
             return [];
         }
@@ -99,6 +105,7 @@ class MonstersRepository implements RepositoryInterface
         $result = $statement->execute();
 
         if ($result instanceof \SQLite3Result === false) {
+            $this->logger->warning('Finding a monster returned no results', [$statement->getSQL(true)]);
             $statement->close();
             return null;
         }
