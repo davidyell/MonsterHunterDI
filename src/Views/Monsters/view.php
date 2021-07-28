@@ -3,10 +3,16 @@
  * @var \App\Model\Entity\Monster $monster
  */
 ?>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap-reboot.min.css">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap-grid.min.css">
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
 <div class="container">
-    <h1><?= $monster->name()?></h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h1><?= $monster->name()?></h1>
+        </div>
+    </div>
 
     <?php if (!empty($monster->image())) :?>
         <div class="row">
@@ -16,7 +22,7 @@
         </div>
     <?php endif;?>
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-md-12">
             <table class="table table-striped">
                 <tr>
@@ -26,7 +32,7 @@
             </table>
 
             <p class="text-center">
-                <a href="/" title="Back" class="btn btn-default btn-block">&leftarrow; Back</a>
+                <a href="/" title="Back" class="btn btn-primary btn-block">&leftarrow; Back</a>
             </p>
         </div>
     </div>
