@@ -34,9 +34,12 @@ class MonstersControllerTest extends TestCase
 
         $mockDatastore = $this->getMockBuilder(Datastore::class)
             ->getMock();
+        $mockLogger = $this->getMockBuilder(\Monolog\Logger::class)
+            ->setConstructorArgs(['test'])
+            ->getMock();
 
         $mockRepository = $this->getMockBuilder(MonstersRepository::class)
-            ->setConstructorArgs([$mockDatastore])
+            ->setConstructorArgs([$mockDatastore, $mockLogger])
             ->onlyMethods(['findAll', 'findOne'])
             ->getMock();
 

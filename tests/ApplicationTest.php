@@ -47,33 +47,7 @@ class ApplicationTest extends TestCase
 
     public function testRenderOutputs()
     {
-        $this->expectOutputString('<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-
-<div class="container">
-    <h1>Examplasaurus</h1>
-
-            <div class="row">
-            <div class="col-md-12 text-center">
-                <img src="/img/examplasaurus.jpg" alt="Examplasaurus">
-            </div>
-        </div>
-    
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-striped">
-                <tr>
-                    <td>Species</td>
-                    <td><strong>Fanged Wyvern</strong></td>
-                </tr>
-            </table>
-
-            <p class="text-center">
-                <a href="/" title="Back" class="btn btn-default btn-block">&leftarrow; Back</a>
-            </p>
-        </div>
-    </div>
-</div>
-');
+        $this->expectOutputRegex("/Examplasaurus/i");
 
         $app = new Application();
 
