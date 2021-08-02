@@ -8,16 +8,27 @@
   "dependencies": {
     "axios": "^0.21.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.15",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "parcel": "^2.0.0-beta.2",
     "typescript": "^4.3.5"
   },
   "scripts": {
     "dev": "parcel build --public-url /react --no-optimize --no-content-hash --no-cache ./webroot/react.html",
     "watch": "parcel watch -p 9999 --public-url /react --no-content-hash ./webroot/react.html",
-    "build": "parcel build --public-url /react ./webroot/react.html"
+    "build": "parcel build --public-url /react ./webroot/react.html",
+    "lint": "eslint ./React/*.tsx",
+    "lint:fix": "eslint --fix ./React/*.tsx"
   }
 }

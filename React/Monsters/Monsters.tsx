@@ -1,38 +1,53 @@
-import React, { useEffect, useState } from "react"
-import Axios from "axios"
+import React, { useEffect, useState } from 'react';
+import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
-export const Monsters = () => {
-    const [monsters, setMonsters] = useState([]);
+export default () => {
+  const [monsters, setMonsters] = useState([]);
 
-    useEffect(() => {
-        if (monsters.length === 0) {
-            fetchMonstersList()
-        }
-    }, [])
+  const fetchMonstersList = async () => {
+    const response = await Axios.get(
+      '/monsters/list',
+      { headers: { Accept: 'application/json' } },
+    );
 
-    const fetchMonstersList = async () => {
-        const response = await Axios.get(
-            'http://localhost:1234/monsters/list',
-            { 'headers': { 'Accept': 'application/json' }}
-        )
+    setMonsters(response.data.monsters);
+  };
 
-        setMonsters(response.data.monsters)
+  useEffect(() => {
+    if (monsters.length === 0) {
+      fetchMonstersList();
     }
+  }, []);
 
-    const monsterListItems = monsters.map(monster => {
-        return (
-            <li key={monster.name}>
-                {monster.name} ({monster.species.name})
-            </li>
-        )
-    })
+  const monsterRows = monsters.map((monster) => (
+    <tr key={monster.id}>
+      <td>
+        <Link to={`/react/monsters/view/${monster.id}`}>{monster.name}</Link>
+      </td>
+      <td>{monster.species.name}</td>
+    </tr>
+  ));
 
-    return (
-        <div id="monster-list">
-            <h1>Monsters</h1>
-            <div className="container">
-                <ul>{monsterListItems}</ul>
-            </div>
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <h1>Available Monsters</h1>
         </div>
-    )
-}
+      </div>
+
+      <table className="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Species</th>
+          </tr>
+        </thead>
+        <tbody>
+          {monsterRows}
+        </tbody>
+      </table>
+    </div>
+  );
+};

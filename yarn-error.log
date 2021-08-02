@@ -1,0 +1,63 @@
+Arguments: 
+  /usr/local/Cellar/node/16.2.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js run lint:fix
+
+PATH: 
+  /usr/local/opt/mysql@5.7/bin:/usr/local/sbin:/Users/davidyell/bin:/usr/local/bin:/Users/davidyell/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  16.2.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/davidyell/Sites/MonsterHunter/package.json: Unexpected token } in JSON at position 1137
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "monster-hunter-di",
+    "version": "1.0.0",
+    "main": "webroot/react/index.html",
+    "repository": "git@github.com:davidyell/MonsterHunterDI.git",
+    "author": "David Yell <neon1024@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+      "axios": "^0.21.1",
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+      "@types/react": "^17.0.15",
+      "@typescript-eslint/eslint-plugin": "^4.28.5",
+      "@typescript-eslint/parser": "^4.28.5",
+      "eslint": "^7.32.0",
+      "eslint-config-airbnb": "^18.2.1",
+      "eslint-plugin-import": "^2.23.4",
+      "eslint-plugin-jsx-a11y": "^6.4.1",
+      "eslint-plugin-react": "^7.24.0",
+      "eslint-plugin-react-hooks": "^4.2.0",
+      "parcel": "^2.0.0-beta.2",
+      "typescript": "^4.3.5"
+    },
+    "scripts": {
+      "dev": "parcel build --public-url /react --no-optimize --no-content-hash --no-cache ./webroot/react.html",
+      "watch": "parcel watch -p 9999 --public-url /react --no-content-hash ./webroot/react.html",
+      "build": "parcel build --public-url /react ./webroot/react.html",
+      "lint": "eslint ./React/*.tsx",
+      "lint:fix": "eslint --fix ./React/*.tsx",
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
