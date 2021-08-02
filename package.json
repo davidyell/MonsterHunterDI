@@ -1,11 +1,12 @@
 {
   "name": "monster-hunter-di",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "webroot/react/index.html",
   "repository": "git@github.com:davidyell/MonsterHunterDI.git",
   "author": "David Yell <neon1024@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -15,7 +16,8 @@
     "typescript": "^4.3.5"
   },
   "scripts": {
-    "dev": "parcel ./webroot/react.html",
-    "build": "parcel build ./webroot/react.html"
+    "dev": "parcel build --public-url /react --no-optimize --no-content-hash --no-cache ./webroot/react.html",
+    "watch": "parcel watch -p 9999 --public-url /react --no-content-hash ./webroot/react.html",
+    "build": "parcel build --public-url /react ./webroot/react.html"
   }
 }

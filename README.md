@@ -7,14 +7,22 @@ For more information watch [Kai Sassnowski talk about Dependancy Injection Conta
 ## Requirements
 * PHP 7.4
 * SQLite 3
+* Node 16
 
 Further requirements can be found in the `composer.json`
 
 ## Running the project
-* Checkout the code
+Checkout the code
+
+### Spin up the PHP / API
 * `composer install`
 * `composer server`
 * Visit [http://localhost:1234](http://localhost:1234)
+
+### Spin up the React front-end
+* `yarn install`
+* `yarn run dev`
+* Visit [http://localhost:5678/react.html](http://localhost:5678/react.html)
 
 ## What's in the box?
 A basic database using some data from the [Monster Hunter game franchise](http://www.capcom-europe.com/). An index 
@@ -36,7 +44,7 @@ This project uses the PSR2 coding standard. There are shortcuts in Composer.
  - [x] Add tests
  - [x] Add a Logger from the container
  - [ ] Add more data to the database
- - [ ] Create a React front-end based on the JSON API
+ - [x] Create a React front-end based on the JSON API
 
 ## Disclaimer
 This project is not associated with Capcom or any Monster Hunter game. It was just example data as I have been 

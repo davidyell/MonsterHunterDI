@@ -77,8 +77,9 @@ class Application
      */
     public function render(ServerRequestInterface $request, View $view): void
     {
-        if (!empty($request->getHeader('Content-Type'))
-            && $request->getHeader('Content-Type')[0] === 'application/json') {
+        if (!empty($request->getHeader('Accept'))
+            && $request->getHeader('Accept')[0] === 'application/json') {
+
             $response = new Response\JsonResponse($view->vars);
         } else {
             $phpView = new PhpRenderer($view->templateFolder);
