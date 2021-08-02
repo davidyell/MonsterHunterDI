@@ -19,11 +19,19 @@ export const Monsters = () => {
         setMonsters(response.data.monsters)
     }
 
+    const monsterListItems = monsters.map(monster => {
+        return (
+            <li key={monster.name}>
+                {monster.name} ({monster.species.name})
+            </li>
+        )
+    })
+
     return (
         <div id="monster-list">
             <h1>Monsters</h1>
             <div className="container">
-                <ul>{ monsters.map(monster => <li key={monster.name}>{monster.name}</li>) }</ul>
+                <ul>{monsterListItems}</ul>
             </div>
         </div>
     )
