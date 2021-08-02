@@ -54,13 +54,14 @@ class MonstersRepository implements RepositoryInterface
         $statement = $this->datastore->prepare($query);
         $result = $statement->execute();
 
-        if ($result instanceof \SQLite3Result === false) {
+        if ($result->fetchArray() === false) {
             $this->logger->warning('Finding monsters returned no results', [$statement->getSQL(true)]);
             $statement->close();
             return [];
         }
 
         $resultArray = [];
+        $result->reset();
         while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
             $monster = new Monster([
                 'id' => $row['id'],
@@ -104,12 +105,13 @@ class MonstersRepository implements RepositoryInterface
 
         $result = $statement->execute();
 
-        if ($result instanceof \SQLite3Result === false) {
-            $this->logger->warning('Finding a monster returned no results', [$statement->getSQL(true)]);
+        if ($result->fetchArray() === false) {
+            $this->logger->warning('Finding a monster returned no results', ['id' => $id]);
             $statement->close();
             return null;
         }
 
+        $result->reset();
         $row = $result->fetchArray(SQLITE3_ASSOC);
 
         $monster = new Monster([

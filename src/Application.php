@@ -10,7 +10,6 @@ use App\Views\View;
 use DI\Container;
 use Laminas\Diactoros\Response;
 use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\PhpRenderer;
@@ -40,7 +39,7 @@ class Application
         $container = new Container();
         $container->set('Monolog\Logger', \DI\factory(function(Container $container) {
             $logger = new \Monolog\Logger('default');
-            $logger->pushHandler(new StreamHandler(\dirname(__DIR__) . '/logs/default.log', Logger::WARNING));
+            $logger->pushHandler(new StreamHandler(\dirname(__DIR__) . '/logs/default.log'));
 
             return $logger;
         }));

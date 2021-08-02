@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Model\Entity\Monster;
 use App\Model\Repository\RepositoryInterface;
 use App\Views\View;
 use Psr\Container\ContainerInterface;
@@ -56,10 +57,18 @@ class MonstersController
     {
         $monster = $this->monstersRepository->findOne($id);
 
+        if ($monster instanceof Monster) {
+            return new View(
+                ['monster' => $monster],
+                \dirname(__DIR__) . '/Views/Monsters',
+                'view.php'
+            );
+        }
+
         return new View(
-            ['monster' => $monster],
-            \dirname(__DIR__) . '/Views/Monsters',
-            'view.php'
+            [],
+            \dirname(__DIR__) . '/Views/Errors',
+            '404.php'
         );
     }
 }
