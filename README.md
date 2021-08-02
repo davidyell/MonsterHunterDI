@@ -24,6 +24,9 @@ Checkout the code
 * `yarn run dev`
 * Visit [http://localhost:5678/react.html](http://localhost:5678/react.html)
 
+* `yarn run watch` - Watch for React app changes and re-build
+* `yarn run build` - Build for production
+
 ## What's in the box?
 A basic database using some data from the [Monster Hunter game franchise](http://www.capcom-europe.com/). An index 
 view and single monster view.
