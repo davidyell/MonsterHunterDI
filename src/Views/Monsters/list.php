@@ -19,16 +19,20 @@
             <th>Name</th>
             <th>Species</th>
         </tr>
-        <?php foreach ($monsters as $monster) : ?>
-            <tr>
-                <td>
-                    <a href="/monsters/view/<?= $monster->id()?>" title="<<?= $monster->name()?>">
-                        <?= $monster->name()?>
-                    </a>
-                </td>
-                <td><?= $monster->species()->name()?></td>
-            </tr>
-        <?php endforeach;?>
+        <?php if (empty($monsters)):?>
+            <tr><td colspan="2">No monsters found</td></tr>
+        <?php else: ?>
+            <?php foreach ($monsters as $monster) : ?>
+                <tr>
+                    <td>
+                        <a href="/monsters/view/<?= $monster->id()?>" title="<<?= $monster->name()?>">
+                            <?= $monster->name()?>
+                        </a>
+                    </td>
+                    <td><?= $monster->species()->name()?></td>
+                </tr>
+            <?php endforeach;?>
+        <?php endif; ?>
     </table>
 
 </div>
