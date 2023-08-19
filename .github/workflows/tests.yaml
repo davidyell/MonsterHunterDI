@@ -33,7 +33,6 @@ jobs:
         run: curl https://deepsource.io/cli | sh
 
       - name: Run tests
-        run: composer run test:coverage:xml
-
-      - name: Push coverage to Deepsource
-        run: ./bin/deepsource report --analyzer test-coverage --key php --value-file ${GITHUB_WORKSPACE}/coverage.xml
+        run: |
+          composer run test:coverage:xml
+          ./bin/deepsource report --analyzer test-coverage --key php --value-file ${GITHUB_WORKSPACE}/coverage.xml
