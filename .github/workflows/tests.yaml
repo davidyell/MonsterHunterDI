@@ -25,7 +25,6 @@ jobs:
         with:
           php-version: '7.4'
           tools: composer
-          cache: composer
 
       - name: Composer install
         run: composer install
