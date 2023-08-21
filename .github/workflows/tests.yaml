@@ -19,6 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -37,3 +39,4 @@ jobs:
 
       - name: Push coverage to Deepsource
         run: ./bin/deepsource report --analyzer test-coverage --key php --value-file ${GITHUB_WORKSPACE}/coverage.xml
+          
