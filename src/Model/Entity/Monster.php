@@ -64,4 +64,9 @@ class Monster implements JsonSerializable
     {
         return $this->data;
     }
+
+    public function getNameAndSpecies(): string
+    {
+        return `$this->name ($this->species)`;
+    }
 }
